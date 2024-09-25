@@ -1,0 +1,20 @@
+
+.card-content{
+    margin: .5rem;
+    padding: 1rem;
+    width: 25rem;
+    min-height: 35rem;
+    background: #FEFFFF;
+    box-shadow: 1px 8px 15px 0px #3f5b69;
+    transition: transform 330ms ease-in-out;
+    &:hover{
+        transform: scale(1.02);
+        background: #f6efdd;
+    }
+    h2{
+        text-align: center;
+        border-bottom: .1rem solid #3f5b69;
+        margin-bottom: 1rem;
+        padding-bottom: .5rem;
+    }
+}
