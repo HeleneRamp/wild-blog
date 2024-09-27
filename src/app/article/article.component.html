@@ -1,6 +1,20 @@
 <div class="card-container">
   <div class="card-content">
-    <h2>{{title}}</h2>
-    <p>{{paragraph}}</p>
+    <div class="card-title">
+      <button (click)="togglePublication()">
+        @if(article.isPublished){ Masquer } @else { Afficher }
+      </button>
+      <h2>{{ article.title }}</h2>
+      <small>auteur: {{ article.author }}</small>
+    </div>
+    @if(article.isPublished) {
+    <img [src]="article.image" [alt]="article.author" />
+    <p>{{ article.content }}</p>
+    <h2>Commentaires</h2>
+    <div class="card-comment">
+      <p>{{ article.comment }}</p>
+      <input [(ngModel)]="article.comment" type="text" />
+    </div>
+    }
   </div>
 </div>
