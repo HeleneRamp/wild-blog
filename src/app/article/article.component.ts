@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Article } from '../models/Article';
 import { CommonModule } from '@angular/common';
 
-interface Article {
-  title: string;
-  author: string;
-  content: string;
-  image: string;
-  isPublished: boolean;
-  comment: string;
-}
 @Component({
   selector: 'app-article',
   standalone: true,
