@@ -1,32 +1,4 @@
-<style></style>
-
-<main class="main">
-  <div class="wild__blog--title">
-    <h1>Bienvenue sur le Wild Blog de {{ title }} !</h1>
-  </div>
-  <div class="article-section">
-    <!-- <app-article></app-article> -->
-    @if(noPublication()) {
-      <h1>Aucuns articles publiés ☹️</h1>
-    }
-     @for (article of articles; track $index) {
-      @if(article.isPublished){
-      <div class="card-content" >
-        <div class="card-title">
-          <p class="card-likes"[ngClass]="{'popular-article': article.likes > 100}">{{article.likes}}</p>
-          <h2>{{ article.title }}</h2>
-          <small>auteur: {{ article.author }}</small>
-        </div>
-        <img [src]="article.image" [alt]="article.author" />
-        <p [ngStyle]="{'color': article.likes > 150 && 'yellow'}">{{ article.content }}</p>
-        <h2>Commentaires</h2>
-        <div class="card-comment">
-          <p>{{ article.comment }}</p>
-          <input [(ngModel)]="article.comment" type="text" />
-        </div>
-      </div>
-    } 
-    }  
-  </div>
-</main>
+<div class="wild__blog--title">
+  <h1>Bienvenue sur le Wild Blog de {{ title }} !</h1>
+</div>
 <router-outlet />
