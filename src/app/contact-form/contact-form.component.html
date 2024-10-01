@@ -1,0 +1,89 @@
+<div class="contactForm-content">
+    <div class="contactForm-title">
+        <h1>Formulaire de contact</h1>
+    </div>
+    <div class="contactForm-link">
+    <a [routerLink]="['/']" > < Retour à la page d'accueil</a>
+</div>
+<div class="form-container">
+    <form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()" class="contactForm-form">
+    <h3>Des questions ? Ecrivez-nous !</h3>
+   
+    <!-- champs lastname -->
+        <div class="error-msg-display">
+    <label for="lastname">Nom : <span>*</span></label>
+    @if (lastname.errors && contactForm.submitted) {
+        <div class="error-msg">
+          @if (lastname.errors['required']) {
+            <span>*Le nom est requis</span>
+          }
+          @else if (lastname.errors['minlength']) {
+            <span>*La longueur minimale doit être supérieure à 2 caractères</span>
+          }
+          @else if (lastname.errors['maxlength']) {
+            <span>*La longueur maximale doit être inférieure à 15 caractères</span>
+          }
+        </div>
+    }
+</div>
+    <input type="text" [(ngModel)]="newMessage.lastName" id="lastname" #lastname="ngModel" name="lastname" minlength="2" maxlength="15" required>
+
+    <!-- champs firstname -->
+        <div class="error-msg-display">
+    <label for="firstname">Prénom : <span>*</span></label>
+    @if (firstname.errors && contactForm.submitted) {
+        <div class="error-msg">
+          @if (firstname.errors['required']) {
+            <span>*Le prénom est requis</span>
+          }
+          @else if (firstname.errors['minlength']) {
+            <span>*La longueur minimale doit être supérieure à 2 caractères</span>
+          }
+          @else if (firstname.errors['maxlength']) {
+            <span>*La longueur maximale doit être inférieure à 15 caractères</span>
+          }
+        </div>
+    }
+</div>
+    <input type="text"  [(ngModel)]="newMessage.firstName" id="firstname" #firstname="ngModel" name="firstname" minlength="2" maxlength="15" required>
+
+    <!-- champs email -->
+        <div class="error-msg-display">
+    <label for="email">Email : <span>*</span></label>
+
+    @if (email.errors && contactForm.submitted) {
+        <div class="error-msg">
+          @if (email.errors['required']) {
+            <span>*L'adresse mail est requis</span>
+          }
+          @if (email.errors['email']) {
+            <span>*L'email est invalide</span>
+          }
+        </div>
+        }
+</div>
+    <input type="email" [(ngModel)]="newMessage.email" id="email" #email="ngModel" name="email" required email>
+
+    <!-- champs message -->
+        <div class="error-msg-display">
+    <label for="content">Contenu du message : <span>*</span></label>
+    @if (content.errors && contactForm.submitted) {
+        <div class="error-msg">
+          @if (content.errors['required']) {
+            <span>*Le contenu du message est requis</span>
+          }
+          @if (content.errors['minlength']) {
+            <span>*Le contenu doit comporter au moins 20 caractères</span>
+          }
+        </div>
+      }
+    </div>
+    <textarea  id="content" name="content" [(ngModel)]="newMessage.content" #content="ngModel" minlength="20" row="4" cols="50" required></textarea>
+<!-- </fieldset> -->
+ <div class="form-btns">
+<button type="reset">Restaurer</button>
+<button type="submit">Envoyer</button>
+</div>
+</form>
+</div>
+</div>

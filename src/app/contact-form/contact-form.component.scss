@@ -1,0 +1,103 @@
+.contactForm-title{
+    display: flex;
+    justify-content: center;
+    margin-block: 2rem;
+    h1{
+        padding: 1rem;
+        background: #abddc4;
+        width: fit-content;
+
+    }
+}
+
+.contactForm-link{
+    font-weight: bold;
+    margin: 2rem;
+    a{
+    background: #abddc4;
+    position: relative;
+    padding: .2rem;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 5px;
+        height: 0.08rem;
+        box-shadow: 1px 1px 1px #000000;
+        bottom: 0;
+        left: 0;
+        background: #ffcb29;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      &:hover {
+        text-shadow:  1px 1px 1px #000000;
+        color: #ffcb29;
+      }
+}
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+.contactForm-form{
+    padding-block: 3rem;
+    padding-inline: 2rem;
+    display: flex;
+    background: #abddc4;
+    flex-direction: column;
+    width: 50%;
+    h3{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    input{
+        padding-block: .5rem;
+        padding-inline: .2rem;
+        margin-bottom: 1rem;
+        background: #ece3dd;
+    }
+    textarea{
+        margin-bottom: 1rem;
+        padding-block: .5rem;
+        padding-inline: .2rem;
+        resize: none;
+        height: 7rem;
+        background: #ece3dd;
+    }
+}
+.form-btns{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    gap: 1.5rem;
+button{
+    width: fit-content;
+    padding: .5rem 1rem .5rem 1rem;
+    background: #154921;
+        color: #ece3dd;
+        cursor: pointer;
+        &:hover {
+          background: #ece3dd;
+          color: #154921;
+          border: 2px solid #154921;
+        }
+}
+}
+.error-msg-display{
+    display: flex;
+    justify-content: space-between;
+    span{
+        color: red;
+    }
+}
+.error-msg{
+    span{
+    color: red;
+    }
+}
