@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Message } from '../models/Message';
+import { Message } from '../../models/Message'; 
 
 
 @Component({

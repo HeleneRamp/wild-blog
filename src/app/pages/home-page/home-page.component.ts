@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
-import { Article } from '../models/Article';
+import { ArticleCardComponent } from '../../components/article-card/article-card.component'; 
+import { RouterLink } from '@angular/router';
+import { Article } from '../../models/Article';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
+
+
 @Component({
-  selector: 'app-article-card',
+  selector: 'app-home-page',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
-  templateUrl: './article-card.component.html',
-  styleUrl: './article-card.component.scss'
+  imports: [ArticleCardComponent , RouterLink, FormsModule, CommonModule],
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.scss'
 })
-export class ArticleCardComponent {
+
+export class HomePageComponent {
+monMessage : string = 'Salut enfant !'
+
+  title = 'Hélène 😸';
   articles: Article[] = [
     { id: 1,
       title: 'Angular 16: Les nouveautés', 
@@ -39,9 +47,9 @@ export class ArticleCardComponent {
       comment: '', 
     }
   ]
+
   
     togglePublication(article : Article): void{
       article.isPublished = !article.isPublished
     }
-  }
-  
+}
