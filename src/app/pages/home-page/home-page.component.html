@@ -14,7 +14,19 @@
   </div>
   <div class="card-section">
     @for (article of articles; track article.id){
-      <app-article-card [article]="article"></app-article-card>
-}
+      <app-article-card [article]="article" (notifyFavorite)="handleAddFavorite($event)" (notifyRemoveFavorite)="handleFavoriteRemoved($event)"></app-article-card>
+    }
+    @for (article of articles; track article.id){
+    @if(isPopupVisible){
+      <div class="popupFavorite">
+        @if(article.isFavorite){
+          <h3>{{messageAddFavorite}}</h3>
+        }
+        @if(!article.isFavorite){
+          <h3>{{ messageRemoveFavorite }}</h3>
+        }
+      </div>
+    }
+  }
 </div>
 </main>

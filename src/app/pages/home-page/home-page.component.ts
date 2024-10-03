@@ -16,7 +16,29 @@ import { CommonModule } from '@angular/common';
 })
 
 export class HomePageComponent {
-monMessage : string = 'Salut enfant !'
+
+  messageAddFavorite: string = '';
+  messageRemoveFavorite: string = ''
+  isPopupVisible: boolean = false;
+
+  handleAddFavorite(message: string) {
+    this.messageAddFavorite = message;
+    this.messageRemoveFavorite = message;
+    this.isPopupVisible = true;
+
+    setTimeout(() => {
+      this.isPopupVisible = false;
+    }, 3000);
+  }
+
+  handleFavoriteRemoved(message: string) {
+    this.messageRemoveFavorite = message;
+    this.isPopupVisible = true;
+    setTimeout(() => {
+      this.isPopupVisible = false;
+    }, 5000);
+  }
+
 
   title = 'Hélène 😸';
   articles: Article[] = [
@@ -26,6 +48,7 @@ monMessage : string = 'Salut enfant !'
       content: 'Les nouveautés d\'Angular 16 incluent...', 
       image: 'https://via.placeholder.com/350x150',
       isPublished: true, 
+      isFavorite: false,
       comment: '', 
     },
     { 
@@ -34,7 +57,8 @@ monMessage : string = 'Salut enfant !'
       author: 'Bob', 
       content: 'Développer une API REST nécessite...', 
       image: 'https://via.placeholder.com/350x150',
-      isPublished: true, 
+      isPublished: true,
+      isFavorite: false, 
       comment: '', 
     },
     { 
@@ -44,12 +68,9 @@ monMessage : string = 'Salut enfant !'
       content: 'TypeScript apporte de la robustesse...', 
       image: 'https://via.placeholder.com/350x150',
       isPublished: true, 
+      isFavorite: false,
       comment: '', 
     }
   ]
 
-  
-    togglePublication(article : Article): void{
-      article.isPublished = !article.isPublished
-    }
 }

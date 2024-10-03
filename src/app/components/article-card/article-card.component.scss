@@ -12,7 +12,7 @@
       margin: 1rem;
       &:hover {
         transform: scale(1.01);
-        background: #ff9a95;
+        background: #fdfd96;
       }
       > h2 {
         text-align: center;
@@ -22,7 +22,7 @@
         border-bottom: 0.1rem solid #154921;
         justify-self: flex-end;
       }
-      img {
+      >img {
         margin-bottom: 1rem;
       }
       > p {
@@ -49,6 +49,7 @@
       padding-bottom: 0.5rem;
       border-bottom: 0.1rem solid #154921;
       button {
+      &:nth-child(1) {
         width: fit-content;
         padding: 0.2rem;
         background: #154921;
@@ -60,6 +61,11 @@
           border: 2px solid #154921;
         }
       }
+      &:nth-child(2){
+        background: transparent;
+        border: none;
+      }
+    }
       h2 {
         text-align: center;
         padding-top: .5rem;
@@ -87,4 +93,12 @@
         outline: none;
       }
     }
+    .btns-title{
+      display: flex;
+      justify-content: space-between;
+      button img {
+        fill: red;
+      }
+      }
+    
     

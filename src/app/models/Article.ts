@@ -5,6 +5,7 @@ export interface Article {
     content: string;
     image: string;
     isPublished: boolean;
+    isFavorite: boolean;
     comment: string;
   }
 
