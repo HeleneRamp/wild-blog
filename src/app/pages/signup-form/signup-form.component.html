@@ -1,0 +1,94 @@
+<div class="signup-form-content">
+  <div class="signup-form-title">
+    <h1>Formulaire d'inscription</h1>
+  </div>
+  <div class="signup-form-link">
+    <a [routerLink]="['/']"> < Retour à la page d'accueil</a>
+  </div>
+
+
+  <div class="signup-form-container">
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <h3>Créez votre compte dès maintenant !</h3>
+
+      
+      <!--champs username-->
+      <div class="error-msg-display">
+        <label for="username">Nom d'utilisateur : <span>*</span></label>
+        @if (signupForm.get('username')?.invalid &&
+        signupForm.get('username')?.touched) {
+        <div class="error-msg">
+          @if (signupForm.get('username')?.errors?.['required']) {
+          <span>*Le nom d'utilisateur est requis.</span>
+          } @if (signupForm.get('username')?.errors?.['minlength']) {
+          <span>*Le nom doit comporter au moins 3 caractères.</span>
+          }
+        </div>
+        }
+      </div>
+      <input id="username" formControlName="username" />
+
+      <!--champs email-->
+      <div class="error-msg-display">
+        <label for="email">Email : <span>*</span></label>
+        @if (signupForm.get('email')?.invalid &&
+        signupForm.get('email')?.touched) {
+        <div class="error-msg">
+          @if(signupForm.get('email')?.errors?.['required']){
+          <span>*L'email est requis</span>
+          } @if(signupForm.get('email')?.errors?.['email']){
+          <span>*Email invalide</span>
+          }
+        </div>
+        }
+      </div>
+      <input id="email" formControlName="email" />
+      <div formGroupName="passwords" class="password-form-section">
+
+      <!--champs password-->
+      <div class="error-msg-display">
+        <label for="password">Mot de passe : <span>*</span></label>
+        @if(signupForm.get('passwords.password')?.invalid &&
+        signupForm.get('passwords.password')?.touched) {
+        <div class="error-msg">
+          @if(signupForm.get('passwords.password')?.errors?.['required']){
+          <span>*Le mot de passe est requis</span>
+          } @else if(signupForm.get('passwords.password')?.errors?.['misSecurePassword'] && signupForm.get('passwords.password')?.touched){
+          <span
+            >*12 caractères, 1 Majuscule, 1 minuscule, 1 chiffre & 1 caractère
+            spécial minimum requis</span
+          >
+          }
+        </div>
+        }
+      </div>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        required
+      />
+
+      <!--champs confirmPassword-->
+      <div class="error-msg-display">
+        <label for="confirmPassword"
+          >Confirmer mot de passe : <span>*</span></label>
+          @if(signupForm.get('passwords')?.errors?.['passwordMisMatch'] && signupForm.get('passwords')?.touched && signupForm.get('passwords.password')?.valid){
+        <div class="error-msg">
+          <span>Les mots de passe ne correspondent pas</span>
+        </div>
+      }
+      </div>
+      <input
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+    </div>
+      <div class="signup-form-btns">
+        <button type="reset">Restaurer</button>
+        <button type="submit">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>

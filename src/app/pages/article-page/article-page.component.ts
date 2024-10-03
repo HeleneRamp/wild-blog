@@ -1,14 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Article } from '../../models/Article';
+
 
 @Component({
   selector: 'app-article-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss',
 })
 export class ArticlePageComponent {
+
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
 
