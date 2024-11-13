@@ -2,9 +2,19 @@
 
     <div class="card-content">
       <div class="card-title">
+        <div class="btns-title">
         <button (click)="togglePublication(article)">
           @if(article.isPublished){ Masquer } @else { Afficher }
         </button>
+        <button (click)="toggleIsFavorite()">
+          @if(!article.isFavorite){
+        <img src="/images/svg/heart-icon.svg" alt="" >
+          }
+          @else {
+            <img src="/images/svg/red-heart-icon.svg" alt="" >
+          }
+      </button>
+      </div>
         <h2>{{ article.title }}</h2>
         <small>auteur: {{ article.author }}</small>
       </div>
