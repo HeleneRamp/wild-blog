@@ -1,1 +1,17 @@
-<h1>Page de l'article n° {{ articleId }}</h1>
+<div class="articlePage">
+  <div class="articlePage-title">
+    <h1>Détails de l'article n° {{ articleId }}</h1>
+  </div>
+  <div class="articlePage-link">
+    <a [routerLink]="['/']"> < Retour à la page d'accueil</a>
+  </div>
+  @if ( article$ | async; as article){
+    <div class="articlePage-content">
+  <div class="articlePage-card">
+    <h2>Titre: {{ article.title }}</h2>
+    <img [src]="article.image" alt="image de l'article" />
+    <p>{{ article.content }}</p>
+  </div>
+</div>
+  }
+</div>

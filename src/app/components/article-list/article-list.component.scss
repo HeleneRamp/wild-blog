@@ -1,0 +1,11 @@
+.card-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.popupFavorite {
+  position: absolute;
+  top: 50%;
+  padding: 2rem;
+  background: white;
+}
