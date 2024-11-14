@@ -3,7 +3,7 @@ import { ArticleCardComponent } from '../article-card/article-card.component';
 import { Article } from '../../models/Article';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-article-list',
@@ -14,14 +14,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticleListComponent {
 
-  private apiUrl = 'http://localhost:3000/articles';
-
-  private http = inject(HttpClient);
+  private apiService : ApiService = inject(ApiService)
 
   articles$!: Observable<Article[]>;
 
   ngOnInit() {
-    this.articles$ = this.http.get<Article[]>(this.apiUrl)
+    this.articles$ = this.apiService.getArticles()
   }
 
   messageAddFavorite: string = '';
