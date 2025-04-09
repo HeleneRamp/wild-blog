@@ -3,7 +3,7 @@ import { ArticleCardComponent } from '../article-card/article-card.component';
 import { Article } from '../../models/Article';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/ApiService/api.service';
 
 @Component({
   selector: 'app-article-list',
@@ -14,15 +14,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticleListComponent {
 
-  private apiUrl = 'http://localhost:3000/articles';
+  private apiService : ApiService = inject(ApiService)
 
-  private http = inject(HttpClient);
+  articles: Article[] = [];
 
-  articles$!: Observable<Article[]>;
-
-  ngOnInit() {
-    this.articles$ = this.http.get<Article[]>(this.apiUrl)
-  }
+ngOnInit() {
+  this.apiService.getArticles().subscribe({
+    next: (data) => {
+      this.articles = data;
+      console.log("Articles reçus :", this.articles);
+    },
+    error: (err) => {
+      console.error("Erreur lors du chargement des articles :", err);
+    }
+  });
+}
 
   messageAddFavorite: string = '';
   messageRemoveFavorite: string = '';

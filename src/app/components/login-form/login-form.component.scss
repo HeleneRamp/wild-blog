@@ -1,0 +1,136 @@
+@import url('https://fonts.cdnfonts.com/css/desporm');
+.loginForm-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    h1{
+        font-size: xxx-large;
+        font-family: 'DESPORM', sans-serif;
+    }
+}
+
+.loginForm-link{
+    font-weight: bold;
+    margin: 2rem;
+    a{
+        background: #ffffff53;
+    position: relative;
+    padding: .2rem;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 5px;
+        height: 0.08rem;
+        box-shadow: 1px 1px 1px #000000;
+        bottom: 0;
+        left: 0;
+        background: #ffcb29;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      &:hover {
+        text-shadow:  1px 1px 1px #000000;
+        color: #ffcb29;
+      }
+}
+}
+.loginForm-container{
+    display: flex;
+    justify-content: center;
+}
+.loginForm__form{
+    padding: 2rem;
+    display: flex;
+    background: #ffffff53;
+    flex-direction: column;
+    width: 50%;
+    label{
+        font-size: larger;
+        margin-bottom: .5rem;
+    }
+    input{
+        padding-block: .2rem;
+        background: transparent;
+        //force le background de l'autocompletion à rester transparent
+        transition: background-color 5000s ease-in-out 0s;
+        font-size: large;
+        outline: none;
+        border: none;
+        border-bottom: 3px solid #ffffff;
+        margin-bottom: .5rem;
+    }
+    &--title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1rem;
+    }
+    p a {
+        color: white;
+          &:hover {
+            text-shadow:  1px 1px 1px #000000;
+            color: #ffcb29;
+          }
+    }
+}
+
+.form-btns{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 2rem;
+button{
+    min-height: 2.82rem;
+    min-width: 8.5rem;
+    width: fit-content;
+    background: #5f5477;
+    padding: .5rem 1rem .5rem 1rem;
+    color: #ece3dd;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    &:hover {
+      background: transparent;
+          color: #5f5477;
+          border: 3px inset #5f5477;
+    }
+}
+}
+.input-display{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding-bottom: .5rem;
+    input{
+        width: 88%
+    }
+}
+@media only screen and (max-width: 767px) {
+    .loginForm-title{
+        h1{
+            font-size: xx-large;
+        }
+    }
+    .loginForm-link {
+        margin-inline: .5rem;
+    }
+    .loginForm__form {
+        width: 95%;
+        padding-inline: 1rem;
+        p {
+            padding-top: 1.5rem;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+    }
+    .form-btns{
+        justify-content: center;
+    }
+}

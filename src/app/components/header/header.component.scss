@@ -1,28 +1,32 @@
+@import url('https://fonts.cdnfonts.com/css/desporm');
+
 .wild__blog--header {
     display: flex;
     justify-content:space-evenly;
     align-items: center;
     padding-bottom: 1rem;
-    padding-inline: 8rem;
+    padding-inline: 4rem;
     position: relative;
 }
 .wild__blog--title{
-    // margin: 0 auto;
     text-align: center;
       h1 {
+        font-family: 'DESPORM', sans-serif;
+        font-size: xxx-large;
         margin-block: 2rem;
         padding: 1rem;
         width: fit-content;
-        background: #abddc4;
       }
     }
     .wild__blog--link{
       font-weight: bold;
       ul {
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
         li a{
-          background: #abddc4;
+          background: #ffffff53;
           padding: .2rem;
           position: relative;
           &::after {
@@ -47,6 +51,57 @@
             text-shadow:  1px 1px 1px #000000;
             color: #ffcb29;
           }
+           img{
+            display: none;
+           }
       }
     }
+    }
+    @media only screen and (max-width: 767px) {
+      .wild__blog--header {
+        padding-inline: 0;
+        flex-direction: column-reverse;
+      }
+      .wild__blog--title{
+        h1{
+          margin-block: 0;
+          font-size:xx-large;
+        }
+      }
+
+      .wild__blog--link {
+        width: 100%;
+        padding-inline: 1rem;
+      
+        ul {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+      
+          li {
+            a {
+              background: transparent;
+              font-size: 0;
+      
+              img {
+                display: inline-block;
+                font-size: initial;
+              }
+            }
+      
+            img {
+              display: block;
+              width: 35px;
+            }
+      
+            &:last-child {
+              margin-left: -5px;
+              img {
+                width: 45px;
+              }
+            }
+          }
+        }
+      }
+
     }

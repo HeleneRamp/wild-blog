@@ -2,32 +2,26 @@
 
     <div class="card-content">
       <div class="card-title">
-        <div class="btns-title">
-        <button (click)="togglePublication(article)">
-          @if(article.isPublished){ Masquer } @else { Afficher }
-        </button>
-        <button (click)="toggleIsFavorite()">
-          @if(!article.isFavorite){
-        <img src="/images/svg/heart-icon.svg" alt="" >
-          }
-          @else {
-            <img src="/images/svg/red-heart-icon.svg" alt="" >
+        <div class="btns-title"> 
+         <button (click)="toggleIsFavorite()"> 
+          @if(!article.favorite){
+        <img src="/images/svg/heart-icon.svg" alt="heart-icon" >
+          } 
+           @else {
+            <img src="/images/svg/red-heart-icon.svg" alt="heart-icon" >
           }
       </button>
       </div>
         <h2>{{ article.title }}</h2>
-        <small>auteur: {{ article.author }}</small>
+        @if (article.authorDTOs[0]) {
+        <small>auteur: {{ article.authorDTOs[0].firstname }} {{ article.authorDTOs[0].lastname }}</small>
+        }
       </div>
-      @if(article.isPublished) {
-      <img [src]="article.image" [alt]="article.author" />
+       @if(article.imageUrls[0]) {
+      <img [src]="article.imageUrls[0]" [alt]="article.authorDTOs[0]" />
+       }
       <p>{{ article.content }}</p>
       <a [routerLink]="['/article', article.id]">Lire l'article</a>
-      <h2>Commentaires</h2>
-      <div class="card-comment">
-        <p>{{ article.comment }}</p>
-        <input [(ngModel)]="article.comment" type="text" />
-      </div>
-      }
     </div>
   
   

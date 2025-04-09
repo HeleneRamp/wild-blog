@@ -3,87 +3,135 @@
     <h1>Formulaire d'inscription</h1>
   </div>
   <div class="signup-form-link">
-    <a [routerLink]="['/']"> < Retour à la page d'accueil</a>
+    <a [routerLink]="['/login']"> < Retour à la page de connexion</a>
   </div>
 
 
   <div class="signup-form-container">
-    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <h3>Créez votre compte dès maintenant !</h3>
+    <form class="signup__form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="signup__form--image">
+        <img src="/images/svg/welcome.svg" alt="">
+      </div>
+      <h2>Créez votre compte dès maintenant !</h2>
 
       
       <!--champs username-->
       <div class="error-msg-display">
-        <label for="username">Nom d'utilisateur : <span>*</span></label>
+        <label for="username">Nom d'utilisateur : <span><img src="/images/svg/star-icon.svg" alt="star-icon"></span></label>
         @if (signupForm.get('username')?.invalid &&
         signupForm.get('username')?.touched) {
         <div class="error-msg">
           @if (signupForm.get('username')?.errors?.['required']) {
-          <span>*Le nom d'utilisateur est requis.</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>Le nom d'utilisateur est requis.</small>
+          </span>
           } @if (signupForm.get('username')?.errors?.['minlength']) {
-          <span>*Le nom doit comporter au moins 3 caractères.</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>Le nom doit comporter au moins 3 caractères.</small>
+          </span>
           }
         </div>
         }
       </div>
+      <div class="input-display">
+        <img src="/images/svg/profil-icon.svg" alt="">
       <input id="username" formControlName="username" />
-
+    </div>
       <!--champs email-->
       <div class="error-msg-display">
-        <label for="email">Email : <span>*</span></label>
+        <label for="email">Email : <span><img src="/images/svg/star-icon.svg" alt="star-icon"></span></label>
         @if (signupForm.get('email')?.invalid &&
         signupForm.get('email')?.touched) {
         <div class="error-msg">
           @if(signupForm.get('email')?.errors?.['required']){
-          <span>*L'email est requis</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>L'email est requis</small>
+          </span>
           } @if(signupForm.get('email')?.errors?.['email']){
-          <span>*Email invalide</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>Email invalide</small>
+          </span>
           }
         </div>
         }
       </div>
+      <div class="input-display">
+        <img src="/images/svg/at-icon.svg" alt="">
       <input id="email" formControlName="email" />
+    </div>
       <div formGroupName="passwords" class="password-form-section">
 
       <!--champs password-->
       <div class="error-msg-display">
-        <label for="password">Mot de passe : <span>*</span></label>
+        <label for="password">Mot de passe : <span><img src="/images/svg/star-icon.svg" alt="star-icon"></span></label>
         @if(signupForm.get('passwords.password')?.invalid &&
         signupForm.get('passwords.password')?.touched) {
         <div class="error-msg">
           @if(signupForm.get('passwords.password')?.errors?.['required']){
-          <span>*Le mot de passe est requis</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>Le mot de passe est requis</small>
+          </span>
           } @else if(signupForm.get('passwords.password')?.errors?.['misSecurePassword'] && signupForm.get('passwords.password')?.touched){
           <span
-            >*12 caractères, 1 Majuscule, 1 minuscule, 1 chiffre & 1 caractère
-            spécial minimum requis</span
+            >
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            <small>12 caractères, 1 Maj., 1 min., 1 chiffre & 1 caractère
+              spécial minimum</small>
+            </span
           >
           }
         </div>
         }
       </div>
+      <div class="input-display">
+        <img src="/images/svg/padlock-icon.svg" alt="verrou">
       <input
-        type="password"
+      [type]= "passwordVisible ? 'text' : 'password'"
         id="password"
+        name="password"
         formControlName="password"
         required
       />
+      @if(passwordVisible){
+        <img src="/images/svg/eyeClose-icon.svg" alt="oeil fermé" (click)="togglePasswordVisibility()">
+  }
+  @if(!passwordVisible){
+      <img src="/images/svg/eye-icon.svg" alt="oeil ouvert" (click)="togglePasswordVisibility()">
+  }
+</div>
 
       <!--champs confirmPassword-->
       <div class="error-msg-display">
         <label for="confirmPassword"
-          >Confirmer mot de passe : <span>*</span></label>
+          >Confirmer mot de passe : <span><img src="/images/svg/star-icon.svg" alt="star-icon"></span></label>
           @if(signupForm.get('passwords')?.errors?.['passwordMisMatch'] && signupForm.get('passwords')?.touched && signupForm.get('passwords.password')?.valid){
         <div class="error-msg">
-          <span>Les mots de passe ne correspondent pas</span>
+          <span>
+            <img src="/images/svg/star-icon.svg" alt="star-icon">
+            Les mots de passe ne correspondent pas</span>
         </div>
       }
       </div>
+      <div class="input-display">
+        <img src="/images/svg/padlock-icon.svg" alt="verrou">
       <input
-        type="password"
+      [type]= "confirmPasswordVisible ? 'text' : 'password'"
         id="confirmPassword"
+        name="confirmPassword"
         formControlName="confirmPassword"
       />
+      @if(confirmPasswordVisible){
+        <img src="/images/svg/eyeClose-icon.svg" alt="oeil fermé" (click)="toggleConfirmPasswordVisibility()">
+  }
+  @if(!confirmPasswordVisible){
+      <img src="/images/svg/eye-icon.svg" alt="oeil ouvert" (click)="toggleConfirmPasswordVisibility()">
+  }
+  </div>
     </div>
       <div class="signup-form-btns">
         <button type="reset">Restaurer</button>

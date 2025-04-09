@@ -1,13 +1,37 @@
 <div class="wild__blog--header">
 <div class="wild__blog--title">
-    <h1>Bienvenue sur le Wild Blog de {{ title }} !</h1>
+    <h1>Bienvenue sur le Wild Blog de {{ title }}&nbsp;!</h1>
   </div>
   <nav class="wild__blog--link">
     <ul>
+      @if (isUserAdmin) {
       <li>
-        <a [routerLink]="['/contact']">Nous contacter</a>
+        <a [routerLink]="['/dashboard']">
+          Dashboard
+        </a>
       </li>
-      <li><a [routerLink]="['/signup-form']">Inscription</a></li>
+    }
+    @else {
+      <li>
+        <a [routerLink]="['/contact']">
+          <img src="/images/svg/contact-icon.svg" alt="icone contqct">
+          Nous contacter
+        </a>
+      </li>
+    }
+      @if (isUserLogged) {
+        <li>
+          <a href="#" (click)="logout($event)">
+            Déconnexion
+          </a>
+        </li>
+      } 
+      @else {
+      <li><a [routerLink]="['/login']">
+        <img src="/images/svg/profil-icon.svg" alt="icone d'inscription">
+        connexion / inscription
+      </a></li>
+    }
     </ul>
   </nav>
 </div>

@@ -1,16 +1,21 @@
 <div class="articlePage">
+  @if ( article$ | async; as article){
   <div class="articlePage-title">
-    <h1>Détails de l'article n° {{ articleId }}</h1>
+    <h1>Article n° {{ articleId }} -  {{ article.title }}</h1>
   </div>
   <div class="articlePage-link">
     <a [routerLink]="['/']"> < Retour à la page d'accueil</a>
   </div>
-  @if ( article$ | async; as article){
     <div class="articlePage-content">
   <div class="articlePage-card">
-    <h2>Titre: {{ article.title }}</h2>
-    <img [src]="article.image" alt="image de l'article" />
+    <img [src]="article.imageUrls[0]" alt="image de l'article" />
+    <div class="articlePage-text">
     <p>{{ article.content }}</p>
+    <p> {{ article.paragrOne }}</p>
+    <p>{{ article.paragrTwo }}</p>
+    <p>{{ article.paragrThree }}</p>
+    <small>Publié le {{ article.updateAt }} par {{ article.authorDTOs[0].firstname }} {{ article.authorDTOs[0].lastname }}.</small>
+  </div>
   </div>
 </div>
   }

@@ -1,11 +1,12 @@
+@import url('https://fonts.cdnfonts.com/css/desporm');
+
 .signup-form-title{
     display: flex;
     justify-content: center;
-    margin-block: 2rem;
+    margin-top: 1.5rem;
     h1{
-        padding: 1rem;
-        background: #abddc4;
-        width: fit-content;
+        font-size: xxx-large;
+        font-family: 'DESPORM', sans-serif;
 
     }
 }
@@ -13,7 +14,7 @@
     font-weight: bold;
     margin: 2rem;
     a{
-    background: #abddc4;
+        background: #ffffff53;
     position: relative;
     padding: .2rem;
       &::after {
@@ -43,59 +44,108 @@
 .signup-form-container{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.signup-form{
-    padding-block: 3rem;
-    padding-inline: 2rem;
+.signup__form {
+    padding: 1.5rem;
     display: flex;
-    background: #abddc4;
+    background: #ffffff53;
     flex-direction: column;
     width: 50%;
-    h3{
+    h2{
         text-align: center;
-        margin-bottom: 1rem;
+        margin-block: 1.5rem;
+    }
+    label{
+        font-size: larger;
+        margin-bottom: .5rem;  
     }
     input{
-        padding-block: .5rem;
-        padding-inline: .2rem;
-        margin-bottom: 1rem;
-        background: #ece3dd;
+        padding-block: .2rem;
+        background: transparent;
+        transition: background-color 5000s ease-in-out 0s;
+        font-size: large;
+        outline: none;
+        border: none;
+        border-bottom: 3px solid #ffffff;
+        margin-bottom: .5rem;
+    }
+    &--image {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 220px;
+        }
     }
 }
 .signup-form-btns{
     display: flex;
     justify-content: flex-end;
-    padding-top: 1rem;
+    padding-top: 2rem;
     gap: 1.5rem;
 button{
+    min-height: 2.82rem;
+    min-width: 8.5rem;
     width: fit-content;
+    background: #5f5477;
     padding: .5rem 1rem .5rem 1rem;
-    background: #154921;
-        color: #ece3dd;
-        cursor: pointer;
-        &:hover {
-          background: #ece3dd;
-          color: #154921;
-          border: 2px solid #154921;
-        }
+    color: #ece3dd;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    &:hover {
+      background: transparent;
+          color: #5f5477;
+          border: 3px inset #5f5477;
+    }
 }
 }
 .error-msg-display{
     display: flex;
     justify-content: space-between;
-    span{
-        font-size: small;
-        color: red;
-    }
 }
 .error-msg{
-    span{
-    color: red;
-    }
+    span small{
+        color: #ffffff;
+         }
 }
 .password-form-section{
     width: 100%;
     input{
         width: 100%;
+    }
+}
+.input-display{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding-bottom: .5rem;
+    input{
+        width: 88%
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .signup-form-title{
+        h1{
+            font-size: xx-large;
+        }
+    }
+    .signup-form-link {
+        margin-inline: .5rem;
+    }
+    .signup__form {
+        width: 95%;
+        padding-inline: 1rem;
+        p {
+            padding-top: 1.5rem;
+            text-align: center;
+            line-height: 1.2rem;
+        }
+    }
+    .form-btns{
+        justify-content: center;
     }
 }
