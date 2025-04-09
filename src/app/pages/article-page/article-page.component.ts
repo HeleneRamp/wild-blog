@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { map, Observable, switchMap } from 'rxjs';
 import { Article } from '../../models/Article';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../services/ApiService/api.service';
 
 
 @Component({
@@ -15,13 +15,13 @@ import { ApiService } from '../../services/api.service';
 })
 export class ArticlePageComponent {
 
+  article$!: Observable<Article>
+  articleId!: number;
   private apiService: ApiService = inject(ApiService)
 
   private route: ActivatedRoute = inject(ActivatedRoute)
   private changeDetector: ChangeDetectorRef = inject(ChangeDetectorRef)
 
-  article$!: Observable<Article>
-  articleId!: number;
   
   ngOnInit() {
     this.article$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {

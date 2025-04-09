@@ -1,13 +1,20 @@
+export interface Author {
+  id: number;
+  firstname: string;
+  lastname: string;
+}
+
 export interface Article {
   id: number;
   title: string;
-  author: string;
   content: string;
-  createdAt: Date;
-  image: string;
-  likeCount: number;
-  isPublished: boolean;
+  updateAt: string;
   categoryName: string;
-  isFavorite: boolean;
-  comment: string;
+  imageUrls: string[];
+  authorDTOs: Author[];
+  paragrOne: string;
+  paragrTwo?: string;
+  paragrThree?: string;
+  likeCount: number;
+  favorite: boolean;
 }

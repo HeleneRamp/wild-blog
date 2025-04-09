@@ -1,18 +1,22 @@
+@import url('https://fonts.cdnfonts.com/css/desporm');
 .articlePage-title{
     display: flex;
     justify-content: center;
     h1{
-        margin-block: 2rem;
+        font-family: 'DESPORM', sans-serif;
+        font-size: xxx-large;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
         padding: 1rem;
         width: fit-content;
-        background: #abddc4;
     }
 }
 .articlePage-link{
     font-weight: bold;
     margin: 2rem;
+    margin-bottom: 4rem;
     a{
-        background: #abddc4;
+        background: #ffffff53;
         position: relative;
         padding: .2rem;
         &::after {
@@ -45,13 +49,26 @@
 }
 .articlePage-card{
     display: flex;
-    flex-direction: column;
-    background: #abddc4;
+    width: 90%;
+    background: #ffffff53;
     padding: 2rem;
     h2{
+        font-weight:lighter;
         margin-bottom: 2rem;
     }
     img{
+        // height: 450px;
+        width: 45%;
         margin-bottom: 1rem;
+        margin-right: 2rem;
     }
+}
+.articlePage-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+   small{
+    margin-left: auto;
+   }
 }

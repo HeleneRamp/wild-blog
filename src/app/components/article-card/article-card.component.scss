@@ -6,13 +6,11 @@
       padding: 1rem;
       width: 25rem;
       height: fit-content;
-      background: #abddc4;
-      box-shadow: 1px 8px 15px 0px #3f5b69;
+      background: #ffffff53;
       transition: transform 330ms ease-in-out;
       margin: 1rem;
       &:hover {
         transform: scale(1.01);
-        background: #fdfd96;
       }
       > h2 {
         text-align: center;
@@ -23,22 +21,30 @@
         justify-self: flex-end;
       }
       >img {
+        height: 245px;
         margin-bottom: 1rem;
       }
       > p {
-        min-height: 8rem;
+        min-height: 5rem;
       }
       a{
-        height: 1.8rem;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        min-height: 2.82rem;
         width: fit-content;
-        padding: 0.2rem;
-        background: #154921;
+        background: #5f5477;
+        padding: .5rem 1rem .5rem 1rem;
         color: #ece3dd;
+        font-size: large;
+        font-weight: bold;
+        border: none;
+        border-radius: .5rem;
         cursor: pointer;
         &:hover {
-          background: #ece3dd;
-          color: #154921;
-          border: 2px solid #154921;
+          background: #ece3dd6d;
+              color: #5f5477;
+              border: 3px inset #5f5477;
         }
       }
     }
@@ -47,18 +53,23 @@
       flex-direction: column;
       margin-bottom: 1rem;
       padding-bottom: 0.5rem;
-      border-bottom: 0.1rem solid #154921;
+      border-bottom: 0.1rem solid #353042;
       button {
+        min-height: 2.82rem;
       &:nth-child(1) {
         width: fit-content;
-        padding: 0.2rem;
-        background: #154921;
+        background: #5f5477;
+        padding: .5rem 1rem .5rem 1rem;
         color: #ece3dd;
+        font-size: large;
+        font-weight: bold;
+        border: none;
+        border-radius: .5rem;
         cursor: pointer;
         &:hover {
-          background: #ece3dd;
-          color: #154921;
-          border: 2px solid #154921;
+          background: transparent;
+              color: #5f5477;
+              border: 3px inset #5f5477;
         }
       }
       &:nth-child(2){
@@ -96,9 +107,6 @@
     .btns-title{
       display: flex;
       justify-content: space-between;
-      button img {
-        fill: red;
-      }
       }
     
     

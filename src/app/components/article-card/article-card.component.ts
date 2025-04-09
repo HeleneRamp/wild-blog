@@ -16,17 +16,13 @@ export class ArticleCardComponent {
 @Output() notifyRemoveFavorite: EventEmitter<string> = new EventEmitter<string>();
 @Output() popupVisible = new EventEmitter<void>()
 
-togglePublication(article : Article): void{
-  article.isPublished = !article.isPublished
-}
-
 toggleIsFavorite(){
-  this.article.isFavorite = !this.article.isFavorite;
+  this.article.favorite = !this.article.favorite;
   this.popupVisible.emit();
-  if (this.article.isFavorite) {
-    this.notifyFavorite.emit(`L'article  → "${this.article.title}" vient d'être liké ❤️`);
+  if (this.article.favorite) {
+    this.notifyFavorite.emit(`Article "${this.article.title}" ajouté aux Favoris ❤️`);
   } else {
-    this.notifyRemoveFavorite.emit(`Vous avez annuler votre like de l'article  → "${this.article.title}" 💔`);
+    this.notifyRemoveFavorite.emit(`Article "${this.article.title}" supprimé des Favoris 💔`);
   }
 }
 }

@@ -11,7 +11,10 @@ import { FormBuilder, ReactiveFormsModule, Validators, ValidatorFn, AbstractCont
   styleUrl: './signup-form.component.scss'
 })
 export class SignupFormComponent {
+
   formBuilder : FormBuilder = inject(FormBuilder);
+  passwordVisible: boolean = false;
+  confirmPasswordVisible: boolean = false;
 
   signupForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
@@ -53,5 +56,12 @@ export class SignupFormComponent {
       const confirmPassword = formGroup.get('confirmPassword')?.value;
       return password === confirmPassword ? null : {passwordMisMatch : true}
     }
+  }
+
+  togglePasswordVisibility() :void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+  toggleConfirmPasswordVisibility() :void {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
 }

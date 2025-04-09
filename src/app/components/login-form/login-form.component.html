@@ -1,0 +1,67 @@
+<div class="loginForm-content">
+  <div class="loginForm-title">
+    <h1>Page de connexion</h1>
+  </div>
+  <div class="loginForm-link">
+    <a [routerLink]="['/']"> < Retour à la page d'accueil</a>
+  </div>
+  <div class="loginForm-container">
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="onSubmit(loginForm)"
+      class="loginForm__form"
+    >
+      <div class="loginForm__form--title">
+        <h2>Authentifiez-vous ! :)</h2>
+        <object
+          data="/images/svg/profil-icon-2.svg"
+          type="image/svg+xml"
+          width="250"
+          height="250"
+        ></object>
+      </div>
+      <label for="email"
+        >Email :
+        <span><img src="/images/svg/star-icon.svg" alt="star-icon" /></span
+      ></label>
+      <div class="input-display">
+        <img src="/images/svg/at-icon.svg" alt="" />
+        <input type="email" name="email" [(ngModel)]="user.email" required email />
+      </div>
+      <label for="password"
+        >Mot de passe :
+        <span><img src="/images/svg/star-icon.svg" alt="star-icon" /></span
+      ></label>
+      <div class="input-display">
+        <img src="/images/svg/padlock-icon.svg" alt="verrou" />
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          name="password"
+          [(ngModel)]="user.password"
+          required
+        />
+        @if(passwordVisible){
+        <img
+          src="/images/svg/eyeClose-icon.svg"
+          alt="oeil fermé"
+          (click)="togglePasswordVisibility()"
+        />
+        } @else {
+        <img
+          src="/images/svg/eye-icon.svg"
+          alt="oeil ouvert"
+          (click)="togglePasswordVisibility()"
+        />
+        }
+      </div>
+      <div class="form-btns">
+        <button type="submit" [disabled]="loginForm.invalid">
+          Se connecter
+        </button>
+      </div>
+      <p>Nouveau bloggeur ? <a [routerLink]="['/register']">
+        Créer&nbsp;un&nbsp;compte 
+      </a></p>
+    </form>
+  </div>
+</div>
