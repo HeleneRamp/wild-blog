@@ -8,29 +8,15 @@ import { Article } from '../../models/Article';
 })
 export class ApiService {
 
-  //private apiUrl = 'http://localhost:3000/articles';
-  private apiUrl = 'http://localhost:8080/articles';
+  private apiUrl = 'http://localhost:8080';
 
   private http = inject(HttpClient);
 
-/*getArticles(): Observable<Article[]> {
-  return this.http.get<Article[]>(this.apiUrl);
-}*/
-
 getArticles(): Observable<Article[]> {
-  return this.http.get<Article[]>(this.apiUrl);
+  return this.http.get<Article[]>(`${this.apiUrl}/articles`);
 }
 
-//avec subscribe (la partie . subscribe à ajouter dans le composant directement)
-
-// getArticleSubscribe(){
-//   return this.http.get<Article[]>(this.apiUrl).subscribe((data) => {
-//     this.articles = data; 
-//   });
-// }
-
 getArticleById(id: number): Observable<Article> {
-  return this.http.get<Article>(`${this.apiUrl}/${id}`)
-  // return this.http.get<Article>(`${this.apiUrl}/` + id)
+  return this.http.get<Article>(`${this.apiUrl}/articles/${id}`)
 }
 }

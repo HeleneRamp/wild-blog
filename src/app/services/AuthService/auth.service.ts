@@ -42,8 +42,6 @@ export class AuthService {
 
     try {
       const decodedToken: any = jwtDecode(token);
-      console.log(decodedToken);
-      
       const expiryDate = new Date(decodedToken.exp * 1000);
       if (expiryDate < new Date()) {
         this.clearToken();
@@ -63,6 +61,7 @@ export class AuthService {
         this.clearToken();
         return false;
       }
+      console.log("👉 Token décodé :", decodedToken);
       return true;
     } catch {
       this.clearToken();
@@ -70,14 +69,19 @@ export class AuthService {
     }
   }
 
-  getUserRole(): string | null {
+  getUserRoles(): Object[] | null {
     const token = this.getToken();
     if (!token) return null;
     try {
       const decodedToken: any = jwtDecode(token);
-      return decodedToken.roles[0]?.authority || null;
+      return decodedToken.roles || null;
     } catch {
       return null
     }
+  }
+
+  hasRole(expectedRole: string): boolean {
+    const roles = this.getUserRoles()
+    return roles ? roles.some((role: any) => role.authority === expectedRole) : false;
   }
 }

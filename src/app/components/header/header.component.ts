@@ -29,16 +29,15 @@ export class HeaderComponent implements OnInit {
     return true;
   }
 
-  isAdmin() : boolean {
-    if (this.authService.getUserRole() !== "ROLE_ADMIN") return false;
-    return true;
+  isAdmin(): boolean {
+    return this.authService.hasRole('ROLE_ADMIN');
   }
 
   logout(event: Event) {
     event.preventDefault();
     this.authService.clearToken();
-    this.router.navigate(['/login']);  
-    //window.location.reload();
+    // this.router.navigate(['/login']);  
+    window.location.reload();
   }
 
 }
